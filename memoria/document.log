@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.10.18)  16 MAY 2018 20:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.10.18)  16 MAY 2018 20:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -789,23 +789,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 66--67
  []
 
 [2]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 97.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 91.
  [3]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 97.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 91.
  (./document.aux
 LaTeX Info: Redefining \. on input line 25.
 LaTeX Info: Redefining \% on input line 25.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 97.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 97.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 91.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 91.
 Package rerunfilecheck Info: File `document.out' has not changed.
-(rerunfilecheck)             Checksum: F0C97BB5F8833510C9B75DE0EA429493;670.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 97.
+(rerunfilecheck)             Checksum: A98169E28D894F491DB6D61F5A3B9D5A;503.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 91.
  ) 
 Here is how much of TeX's memory you used:
- 8364 strings out of 494437
- 119139 string characters out of 6166644
- 231447 words of memory out of 5000000
+ 8361 strings out of 494437
+ 119097 string characters out of 6166644
+ 231444 words of memory out of 5000000
  11600 multiletter control sequences out of 15000+600000
  10094 words of font info for 36 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
@@ -819,10 +819,10 @@ fonts/cm/cmr12.pfb></usr/local/texlive/2017basic/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmsy10.pfb></usr/local/texlive/2017basic/texmf-dist/fonts/type1/pub
 lic/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017basic/texmf-dist/fonts/type1
 /public/amsfonts/cm/cmti12.pfb>
-Output written on document.pdf (3 pages, 105689 bytes).
+Output written on document.pdf (3 pages, 104348 bytes).
 PDF statistics:
- 123 PDF objects out of 1000 (max. 8388607)
- 108 compressed objects within 2 object streams
- 22 named destinations out of 1000 (max. 500000)
- 97 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 110 PDF objects out of 1000 (max. 8388607)
+ 96 compressed objects within 1 object stream
+ 19 named destinations out of 1000 (max. 500000)
+ 73 words of extra memory for PDF output out of 10000 (max. 10000000)
 

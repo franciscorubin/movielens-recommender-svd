@@ -70,15 +70,9 @@
 	     \subsection{Cold Start}
 	     	\noindent Para tratar con el problema del Cold Start, he optado por una solución sencilla pero efectiva. Cuando el usuario entra por primera vez a la página muestro una lista con películas aleatorias que tienen un mínimo de 1000 valoraciones. El objetivo es que al usuario se le muestren películas que conozca, para que así pueda valorarlas y se pase la fase fría rápidamente. 
    
-    \section{Aplicación Web}
-    	\subsection{Backend}
-    	 * Mencionar que tuve que implementar parte del algoritmo en JS, que habria sido mejor hacerlo en django pero por falta de tiempo y tener mas experiencia elegi node
-    	 * Enumerar api expuesta y explicar
-     	\subsection{Frontend}
-     	 * Explicar brevemente los componentes del frontend
-     	 * Redux store, dejar claro que cosas se guardan en memoria del browser
-	\section{Conclusiones}
-  	 * ???????
+	\section{Aplicación}
+  	 	\noindent Acompañando el sistema recomendador, he implementado una aplicación web compuesta por un frontend en React (javascript) y un backend en NodeJS. 
+  	 	\noindent La aplicación permite valorar películas mostradas en un listado, y conforme el usuario va valorando nuevas películas, el listado se actualiza mostrándole películas más ajustadas a sus preferencias. También hay una sección 'Votar', en la que el usuario puede ver películas populares aleatorias y continuar votando.
  	
 \begin{thebibliography}{50}
 	
@@ -91,7 +85,7 @@
 	\bibitem{svd_funk} 
 	\href{http://sifter.org/simon/journal/20061211.html}{Funk Journal, Netflix Prize}
 	\bibitem{github_svd} 
-	\href{TODO!~~!!!!!!!}{Implementación Funk SVD}
+	\href{https://github.com/pancho111203/movielens-recommender-svd/blob/master/ai/svd_recommender.py}{Implementación Funk SVD}
 \end{thebibliography}
 
 \end{document}
