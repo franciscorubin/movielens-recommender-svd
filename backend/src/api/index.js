@@ -1,6 +1,6 @@
 
 import express from 'express';
-import { getModel } from '../middleware/svd';
+import { getV } from '../middleware/svd';
 import { getImdbIds, getMovieInfoSmall } from '../middleware/movies';
 import _ from 'lodash';
 
@@ -9,17 +9,18 @@ import { get_movies_data } from '../logic/imdb';
 
 const api = express.Router();
 
-api.post('/getRecommendations', getModel, getImdbIds, getMovieInfoSmall, function (req, res) {
+api.post('/getRecommendations', getV, getImdbIds, getMovieInfoSmall, function (req, res) {
   const user_ratings = req.body.ratings;
-  const svd_model = req.svd_model;
+  const svd_V = req.svd_V;
   const imdb_ids = req.imdb_ids;
   const movie_info = req.movie_info_small
 
   let recommendation_movie_ids;
-  if (!svd_model || !user_ratings || _.keys(user_ratings).length < 10) {
-    recommendation_movie_ids = get_popular_movies(movie_info);
+
+  if (!svd_V || !user_ratings || _.keys(user_ratings).length < 10) {
+    recommendation_movie_ids = get_popular_movies(movie_info, 50);
   } else {
-    recommendation_movie_ids = recommend_svd(user_ratings, svd_model);
+    recommendation_movie_ids = recommend_svd(user_ratings, svd_V, 50);
   }
 
   const recommendation_imdb_ids = recommendation_movie_ids.map((id) => { return imdb_ids[id]; })
@@ -31,7 +32,7 @@ api.post('/getRecommendations', getModel, getImdbIds, getMovieInfoSmall, functio
       const imdbId = recommendation_imdb_ids[i];
       const movieId = recommendation_movie_ids[i];
       if (movie) {
-        recommendations[movieId] = { ...movie, imdbId }
+        recommendations[movieId] = { ...movie, imdbId, id: movieId }
       }
     }
 
@@ -58,7 +59,7 @@ api.post('/getPopularMovies', getImdbIds, getMovieInfoSmall, function (req, res)
       const imdbId = recommendation_imdb_ids[i];
       const movieId = recommendation_movie_ids[i];
       if (movie) {
-        popularMovies[movieId] = { ...movie, imdbId }
+        popularMovies[movieId] = { ...movie, imdbId, id: movieId }
       }
     }
 

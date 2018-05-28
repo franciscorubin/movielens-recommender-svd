@@ -8,6 +8,7 @@ const actionDescriptor = {
 }
 
 export const fetchPopularMovies = () => {
+  console.log('Fetching more popular movies');
   return (dispatch, getState) => {
     const seenMovies = getState().movies.seen;
 
@@ -26,7 +27,7 @@ export const fetchPopularMovies = () => {
       .then((jsonRes) => {
         const popularMovies = jsonRes['popularMovies'];
 
-        console.log('Received new popular movies:');
+        console.log('Received new popular movies');
 
         dispatch(addPopular(popularMovies));
       })
@@ -67,7 +68,7 @@ const initialState = {
 export function movies(state = initialState, action) {
   switch (action.type) {
     case actionDescriptor.addSeen:
-      const newSeen = _.uniq([...state.seen, action.data]);
+      const newSeen = _.uniq([...state.seen, ...action.data]);
       const newPopularNotSeen = _.without(action.data, state.popularNotSeen);
       return { ...state, popularNotSeen: newPopularNotSeen, seen: newSeen }
     case actionDescriptor.addPopular:

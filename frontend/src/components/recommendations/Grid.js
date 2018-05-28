@@ -4,7 +4,6 @@ import { withStyles } from 'material-ui/styles';
 import GridList, { GridListTile, GridListTileBar } from 'material-ui/GridList';
 import Subheader from 'material-ui/List/ListSubheader';
 import IconButton from 'material-ui/IconButton';
-import StarIcon from '@material-ui/icons/Star';
 import { header } from '../../theme';
 
 const styles = theme => ({
@@ -41,7 +40,7 @@ function Grid(props) {
               subtitle={<span>by: {movie.director}</span>}
               actionIcon={
                 <IconButton className={classes.icon}>
-                  <StarIcon />
+                  <p>Star</p>
                 </IconButton>
               }
             />

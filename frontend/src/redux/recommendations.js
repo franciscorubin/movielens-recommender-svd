@@ -3,8 +3,6 @@ const actionDescriptor = {
   setRecommendations: 'RECOMMENDATIONS/SET'
 }
 
-// TODO hay un fallo. cuando llegan recomendaciones se meten en la lista movieInfo, la cual es usada para la pantalla Rate. esto hara que muchas peliculas de Rate sean de las recomendadas
-
 export const setRecommendations = (recommendations) => {
   return {
     type: actionDescriptor.setRecommendations,
