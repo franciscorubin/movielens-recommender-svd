@@ -1,5 +1,5 @@
 const imdb = require('imdb-api');
-const omdb_api_key = '63cdb802';
+const omdb_api_key = '8ec0b727';
 
 export function get_movies_data(imdb_ids) {
   if (!Array.isArray(imdb_ids)) {

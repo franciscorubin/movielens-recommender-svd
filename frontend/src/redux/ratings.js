@@ -5,16 +5,19 @@ import { api } from '../config';
 
 const actionDescriptor = {
   rateMovie: 'RATINGS/RATE',
-  confirmRatings: 'RATINGS/CONFIRMRATINGS'
+  confirmRatings: 'RATINGS/CONFIRMRATINGS',
+  setProcessing: 'RATINGS/SETPROCESSING'
 }
 
 
 export const processRatings = () => {
   return (dispatch, getState) => {
+    console.log('Processing ratings.')
+    dispatch(setProcessing(true));
     const ratings = getState().ratings;
     const confirmedRatings = ratings.confirmed;
     const pendingRatings = ratings.pending;
-
+    const data = JSON.stringify({ ratings: {...pendingRatings, ...confirmedRatings} });
     fetch(`${api.server_address}api/getRecommendations`,
       {
         headers: {
@@ -22,7 +25,7 @@ export const processRatings = () => {
           'Content-Type': 'application/json'
         },
         method: "POST",
-        body: JSON.stringify({ ratings: [...pendingRatings, ...confirmedRatings] })
+        body: data
       })
       .then((res) => {
         return res.json();
@@ -36,6 +39,7 @@ export const processRatings = () => {
         dispatch(addMoviesInfo(recommendations));
         dispatch(confirmRatings(pendingRatings));
         dispatch(setRecommendations(recommendationIds));
+        dispatch(setProcessing(false));
       })
       .catch((err) => {
         console.error('Error processing ratings and loading recommendations:');
@@ -60,9 +64,17 @@ export const confirmRatings = (movieIds) => {
   }
 }
 
+const setProcessing = (bool) => {
+  return {
+    type: actionDescriptor.setProcessing,
+    data: bool
+  }
+}
+
 const initialState = {
   confirmed: {},
-  pending: {}
+  pending: {},
+  currentlyProcessing: false
 }
 
 export function ratings(state = initialState, action) {
@@ -76,6 +88,8 @@ export function ratings(state = initialState, action) {
       const movies = _.pick(movieIds, state.pending);
       const newConfirmed = { ...state.confirmed, ...movies }
       return { ...state, pending: newPending2, confirmed: newConfirmed }
+    case actionDescriptor.setProcessing:
+      return { ...state, currentlyProcessing: action.data }
     default:
       return state
   }

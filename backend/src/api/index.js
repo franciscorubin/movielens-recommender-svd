@@ -17,10 +17,12 @@ api.post('/getRecommendations', getV, getImdbIds, getMovieInfoSmall, function (r
 
   let recommendation_movie_ids;
 
-  if (!svd_V || !user_ratings || _.keys(user_ratings).length < 10) {
-    recommendation_movie_ids = get_popular_movies(movie_info, 50);
+  if (!svd_V || !user_ratings || _.keys(user_ratings).length < 3) {
+    console.log('Getting Popular Movies');
+    recommendation_movie_ids = get_popular_movies(movie_info, 100);
   } else {
-    recommendation_movie_ids = recommend_svd(user_ratings, svd_V, 50);
+    console.log('Getting recommendations based on svd');
+    recommendation_movie_ids = recommend_svd(user_ratings, svd_V, 100);
   }
 
   const recommendation_imdb_ids = recommendation_movie_ids.map((id) => { return imdb_ids[id]; })

@@ -1,7 +1,7 @@
 import React from "react";
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, Image, WithStore } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
-
+import Movie from '../Movie';
 
 const VISIBLE_SLIDES = 5;
 class AmountSeenCounter extends React.Component {
@@ -53,9 +53,7 @@ class RateSlider extends React.Component {
           <Slider style={styles.slider}>
             {this.props.movies.map((movie, i) => {
               return (
-                <Slide key={movie.id} index={i}>
-                  <Image src={movie.poster} />
-                </Slide>
+                <Movie key={movie.id} style={{ marginLeft: 8, marginRight: 8, width: 'calc(100% - 16px)', height: '100%' }} movie={movie} usesSlider={true} i={i} />
               )
             })}
           </Slider>

@@ -12,7 +12,7 @@ import RateSlider from './RateSlider';
 import { connect } from 'react-redux';
 import * as _ from 'ramda';
 import { fetchPopularMovies, addSeen } from '../../redux/movies';
-
+import { processRatings } from '../../redux/ratings';
 
 class ResponsiveDialog extends React.Component {
   constructor(props) {
@@ -29,7 +29,7 @@ class ResponsiveDialog extends React.Component {
     if (this.state.lastSeenIndex >= 10) {
       this.props.fetchMorePopular();
     }
-
+    this.props.confirmRatings();
     this.props.onDialogClose();
   }  
 
@@ -42,15 +42,15 @@ class ResponsiveDialog extends React.Component {
           maxWidth={false}
           fullScreen={fullScreen}
           open={this.props.open}
-          onClose={this.props.onDialogClose}
+          onClose={this.onClose}
         >
           <DialogTitle>{'Puntuar películas'}</DialogTitle>
           <DialogContent>
             <RateSlider movies={this.props.movies} setLastSeenIndex={(last) => { this.setState({ lastSeenIndex: last })}} />
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.onClose} color="primary" autoFocus>
-              Salir
+            <Button onClick={this.onClose} color="default" autoFocus>
+              Puntuar
             </Button>
           </DialogActions>
         </Dialog>
@@ -69,7 +69,8 @@ const mapStateToProps = ({ movies }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchMorePopular: () => { dispatch(fetchPopularMovies())},
-    addSeenMovies: (ids) => { dispatch(addSeen(ids))}
+    addSeenMovies: (ids) => { dispatch(addSeen(ids))},
+    confirmRatings: () => { dispatch(processRatings()); }
   }
 };
 
